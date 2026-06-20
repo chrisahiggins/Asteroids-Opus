@@ -1,0 +1,7 @@
+# Build intermediates (compiled .class files). The runnable dist/Asteroids.jar is kept.
+/out/
+*.class
+
+# OS / editor cruft
+Thumbs.db
+.DS_Store
