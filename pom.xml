@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.asteroids</groupId>
+    <artifactId>asteroids-opus</artifactId>
+    <version>1.0.0</version>
+    <packaging>jar</packaging>
+
+    <name>Asteroids-Opus</name>
+    <description>
+        A faithful recreation of the 1979 Atari arcade classic Asteroids, written in pure Java
+        (Swing/AWT + javax.sound.sampled) with no third-party dependencies. Builds into a
+        self-contained executable JAR that runs on JRE 8 or newer.
+    </description>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <!-- Target Java 8 bytecode so the JAR runs on a JRE 8. source/target (rather than
+             release) keeps the build usable on a JDK 8 toolchain as well as newer JDKs. -->
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+    </properties>
+
+    <!-- The game has no runtime dependencies (pure Java SE). -->
+
+    <build>
+        <!-- This project keeps its sources directly under src/ rather than the Maven
+             default of src/main/java. -->
+        <sourceDirectory>${project.basedir}/src</sourceDirectory>
+        <!-- Produces target/Asteroids.jar, matching the deliverable name. -->
+        <finalName>Asteroids</finalName>
+
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.13.0</version>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.4.1</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <mainClass>com.asteroids.Main</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
